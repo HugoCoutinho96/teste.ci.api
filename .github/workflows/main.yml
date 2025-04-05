@@ -58,6 +58,9 @@ jobs:
       #    push: true
       #    tags: hugocoutinho96/projeto-ci-api:${{ steps.generate_tag.outputs.sha}}, hugocoutinho96/projeto-ci-api:latest    
 
+      - name: DEBUG | echo ordem
+        run: echo "🚀 Rodando após login e configure-aws"
+
       - name: Build docker image
         env: 
           REGISTRY: ${{steps.login-ecr.outputs.registry}}
