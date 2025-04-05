@@ -58,8 +58,13 @@ jobs:
       #    push: true
       #    tags: hugocoutinho96/projeto-ci-api:${{ steps.generate_tag.outputs.sha}}, hugocoutinho96/projeto-ci-api:latest    
 
-      # - name: Build docker image
-      #  run: docker build -t hugocoutinho96/projeto-ci-api:${{ steps.generate_tag.outputs.sha}} .
+      - name: Build docker image
+        env: 
+          REGISTRY: ${{steps.login-ecr.outputs.registry}}
+          TAG: ${{steps.generate_tag.outputs.sha}}
+        run: |
+          docker build -t $REGISTRY/projeto-ci:$TAG .
+          docker push $REGISTRY/projeto-ci:$TAG
 
       # - name: Push image
       #  run: docker push hugocoutinho96/projeto-ci-api:${{ steps.generate_tag.outputs.sha}}  
