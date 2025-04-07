@@ -79,8 +79,8 @@ jobs:
           image: ${{steps.build-docker-image.outputs.image}}
           access-role-arn: arn:aws:iam::484109133616:role/app-runner-role
           region: eu-central-1
-          cpu: 1
-          memory: 1
+          cpu: 2
+          memory: 2
           port: 3000    
 
       # - name: Push image
